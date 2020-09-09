@@ -1,0 +1,26 @@
+{% extends '@erp/blank.html.twig' %}
+
+
+{% block mainContaint %}
+{{ form_start(form)   }}
+ <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                  {{ form_widget(form.nom) }}
+                  </div>
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                     {{ form_widget(form.prenom) }}
+                  </div>
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    {{ form_widget(form.statut) }}
+                  </div>
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    {{ form_widget(form.telephone) }}
+                  </div>
+                </div>
+
+<input  type="submit" value="ajouter" />
+
+{{ form_end(form)}}
+
+
+{% endblock %}

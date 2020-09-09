@@ -1,0 +1,110 @@
+ 
+ {% extends '@erp/blank.html.twig' %}
+ 
+ {% block mainContaint %}
+ 
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Id</th>
+                      <th>Nom</th>
+                      <th>Prénom</th>
+                      <th>email</th>
+                      <th>Statut</th>
+                      <th>Ajouter</th>
+                      <th>Supprimer</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>Id</th>
+                      <th>Nom</th>
+                      <th>Prénom</th>
+                      <th>email</th>
+                      <th>Statut</th>
+                      <th>Ajouter</th>
+                      <th>Supprimer</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+        
+
+                {% for cle in result %}
+   
+              
+<div class="modal fade" id="exampleModal{{cle.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+ 
+        <form method="post" action="{{path('Modifier')}}">
+          <div class="form-group">
+            <label for="nom" class="col-form-label">Nom:</label>
+            <input type="hidden" class="form-control" name="id" value={{ cle.id }}>
+            <input type="text" class="form-control" name="nom" value={{ cle.nom }}>
+          </div>
+          <div class="form-group">
+            <label for="prenom" class="col-form-label">Prénom:</label>
+            <input type="text" class="form-control" name="prenom" value={{ cle.prenom}}>
+          </div>
+          <div>
+            <label for="email" class="col-form-label">Email</label>
+            <input class="form-control" name="email" value={{ cle.email}} />
+          </div>
+          <div>
+            <label for="statut" class="col-form-label">Statut</label>
+            <input class="form-control" name="statut" value={{cle.statut}} />
+          </div>
+           <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+        <button type="submit" class="btn btn-primary">Valider</button>
+      </div>
+        </form>
+
+      </div>
+     
+    </div>
+  </div>
+</div>
+                    <tr>
+                      <td>{{ cle.id }}</td>
+                      <td>{{cle.nom}}</td>
+                      <td>{{ cle.prenom}}</td>
+                      <td>{{cle.email}}</td>
+                      <td>{{cle.statut}}</td>
+                      <td> <a href="{{path('ajout',{'id':cle.id})}}">Modifier</a></td>
+                      <td> <a href="{{ path('supprime', {'id': cle.id}) }}">Supprimer</a></td>
+                    </tr>
+                {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

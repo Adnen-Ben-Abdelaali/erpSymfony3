@@ -1,0 +1,36 @@
+erp_homepage:
+    path:     / 
+    defaults: { _controller:erpBundle:Default:index }
+
+erp_personne:
+    path: /personne/{nom}
+    defaults: {_controller:erpBundle:Default:personne}
+
+erp_somme:
+    path: /somme/{permierNombre}/{deuxiemeNombre}
+    defaults: {_controller:erpBundle:Default:somme}
+
+erp_ajouterClient:
+    path: /client/setClient
+    defaults: { _controller: erpBundle:Client:ajouter}
+
+erp_afficherClient:
+    path: /client/getClient
+    defaults: { _controller: erpBundle:Client:afficher}
+
+
+ajout:
+    path:     /ajout/{id}
+    defaults: { _controller: erpBundle:employe:ajout }
+
+affiche: 
+    path: /affiche
+    defaults: {_controller: erpBundle:employe:affiche}
+
+supprime:
+    path: /supprime/{id}
+    defaults: {_controller: erpBundle:employe:supprime}
+
+Modifier:
+    path: /modif
+    defaults: {_controller: erpBundle:employe:Modifier}
